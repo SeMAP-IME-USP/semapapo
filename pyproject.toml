@@ -1,8 +1,6 @@
 [build-system]
-requires = [
-  "scikit-build-core>=0.9"
-]
-build-backend = "scikit_build_core.build"
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "semapapo"
@@ -11,12 +9,3 @@ description = "semapapo"
 authors = [{ name = "potalej" }]
 readme = "README.md"
 dependencies = []
-
-[tool.scikit-build]
-cmake.source-dir = "python"
-wheel.packages = ["src/semapapo"]
-
-[tool.scikit-build.sdist]
-include = [
-  "src/**"
-]

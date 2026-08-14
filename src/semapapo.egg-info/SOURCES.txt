@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+src/semapapo/__init__.py
+src/semapapo/__main__.py
+src/semapapo.egg-info/PKG-INFO
+src/semapapo.egg-info/SOURCES.txt
+src/semapapo.egg-info/dependency_links.txt
+src/semapapo.egg-info/top_level.txt
+tests/test_import.py
