@@ -1,0 +1,59 @@
+name: To compile and publish on PyPI
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Configurate python
+        uses: actions/setup-python@v5
+
+      - name: Running the cibuildwheel
+        run: |
+          python -m cibuildwheel --output-dir wheelhouse
+        env:
+          CIBW_BUILD: "cp39-* cp310-* cp311-* cp312-* cp313-*"
+          
+          CIBW_TEST_REQUIRES: pytest
+          CIBW_TEST_COMMAND: pytest {project}/tests
+
+          CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
+          CIBW_SKIP: "*-musllinux_*"
+
+      - name: Uploading the artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-package-distributions
+          path: ./wheelhouse/*.whl
+
+  publish-pypi:
+    name: >-
+      publish to PyPI
+    needs:
+    - build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: pypi
+      url: https://pypi.org/p/semapapo
+    permissions:
+      id-token: write  # IMPORTANT: mandatory for trusted publishing
+
+    steps:
+    - name: Downloading all the dists
+      uses: actions/download-artifact@v6
+      with:
+        name: python-package-distributions
+        path: dist/
+    - name: Publishing on PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1

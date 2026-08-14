@@ -1,0 +1,16 @@
+[project]
+name = "semapapo"
+version = "0.0.1"
+description = "semapapo"
+authors = [{ name = "potalej" }]
+readme = "README.md"
+dependencies = []
+
+[tool.scikit-build]
+cmake.source-dir = "python"
+wheel.packages = ["src/semapapo"]
+
+[tool.scikit-build.sdist]
+include = [
+  "src/**"
+]
