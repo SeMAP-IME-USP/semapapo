@@ -4,8 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "semapapo"
-version = "0.0.1"
+version = "1.0.0"
 description = "semapapo"
 authors = [{ name = "potalej" }]
 readme = "README.md"
 dependencies = []
+
+[project.scripts]
+semapapo = "semapapo.semapapo:semapapo"
