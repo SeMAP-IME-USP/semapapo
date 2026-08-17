@@ -4,12 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "semapapo"
-version = "1.1.0"
+version = "1.1.1"
 description = "semapapo"
 authors = [{ name = "potalej" }]
 readme = "README.md"
 dependencies = []
-requires-python = ">=3.9"
 
 [project.scripts]
 semapapo = "semapapo.semapapo:semapapo"
