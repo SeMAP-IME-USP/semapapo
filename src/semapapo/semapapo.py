@@ -12,6 +12,7 @@ def configurar ():
 
     config_file.write_text("""
 hora=$(date +%H)
+hora=$((10#$hora))
 frase="agora são $(date '+%H:%M')"
 
 if (( hora >= 4 && hora < 11 )); then
