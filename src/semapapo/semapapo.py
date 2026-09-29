@@ -11,24 +11,36 @@ def configurar ():
     config_dir.mkdir(exist_ok=True)
 
     config_file.write_text("""
-hora=$(date +%H)
+hora=$(date +%H%M)
 hora=$((10#$hora))
 frase="agora são $(date '+%H:%M')"
 
-if (( hora >= 4 && hora < 11 )); then
-    msg="bom dia! $frase"
-elif (( hora >= 11 && hora < 13 )); then
-    msg="já pode? $frase"
-elif (( hora >= 13 && hora < 15 )); then
-    msg="café? $frase"
-elif (( hora >= 15 && hora < 17 )); then
-    msg="boa tarde! $frase"
-elif (( hora >= 17 && hora < 19 )); then
-    msg="bó jantá? $frase"
-elif (( hora >= 19 && hora < 20 )); then
-    msg="boa noite! $frase"
-elif (( hora >= 20 )); then
-    msg="sextou! $frase"
+if (( hora >= 400 && hora < 8300 )); then
+    msg = "bom dia! $frase"
+elif (( hora >= 830 && hora < 1030 )); then
+    msg = "bom dia! café? $frase"
+elif (( hora >= 1030 && hora < 1115 )); then
+    msg = "bom dia ! $frase"
+elif (( hora >= 1115 && hora < 1300 )); then
+    msg = "já pode? $frase"
+elif (( hora >= 1300 && hora < 1415 )); then
+    msg = "café com buchin chei? $frase"
+elif (( hora >= 1415 && hora < 1500 )); then
+    msg = "café? $frase"
+elif (( hora >= 1500 && hora < 1730 )); then
+    msg = "boa tarde! $frase"
+elif (( hora >= 1730 && hora < 1800 )); then
+    msg = "boa tarde! bó jantá? $frase"
+elif (( Hora >= 1800 && hora < 1801 )); then
+    msg = "caraca são $frase"
+elif (( Hora >= 1801 && hora < 1945 )); then
+    msg = "boa noite! bó jantá? $frase"
+elif (( hora >= 1945 && hora < 2000 )); then
+    msg = "boa noite! $frase"
+elif (( hora >= 2000 && hora < 2230)); then
+    msg = "sextou! $frase"
+elif (( hora >= 2230 )); then 
+    msg = "já ta em casa? $frase"
 else
     msg="tá acordado pq? $frase"
 fi
