@@ -11,7 +11,7 @@ def configurar ():
     config_dir.mkdir(exist_ok=True)
 
     config_file.write_text("""
-hora=${SEMAPAPO_TESTE:-$(date +%H%M)}
+hora=$(date +%H%M)
 hora=$((10#$hora))
 
 frase="agora são $(date '+%H:%M')"
