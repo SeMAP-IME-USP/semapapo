@@ -13,6 +13,7 @@ def configurar ():
     config_file.write_text("""
 hora=$(date +%H%M)
 hora=$((10#$hora))
+
 frase="agora são $(date '+%H:%M')"
 
 if (( hora >= 400 && hora < 830 )); then
@@ -31,9 +32,9 @@ elif (( hora >= 1500 && hora < 1730 )); then
     msg="boa tarde! $frase"
 elif (( hora >= 1730 && hora < 1800 )); then
     msg="boa tarde! bó jantá? $frase"
-elif (( Hora >= 1800 && hora < 1801 )); then
+elif (( hora >= 1800 && hora < 1801 )); then
     msg="caraca são $frase"
-elif (( Hora >= 1801 && hora < 1945 )); then
+elif (( hora >= 1801 && hora < 1945 )); then
     msg="boa noite! bó jantá? $frase"
 elif (( hora >= 1945 && hora < 2000 )); then
     msg="boa noite! $frase"
